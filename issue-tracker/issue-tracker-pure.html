@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Todo Tracker</title>
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+  </head>
+  <style>
+    .card {
+      display: block;
+    }
+    .show {
+      display: none;
+    }
+  </style>
+  <body>
+    <div class="loader">
+      <div class="sk-chase">
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+      </div>
+    </div>
+    <div class="mx-auto" style="width: 650px; margin: 80px">
+      <h1 class="display-5 text-center" style="font-weight: lighter">
+        Todo Tracker
+      </h1>
+    </div>
+    <div id="container" class="container">
+      <form id="issueInputForm">
+        <div class="form-group">
+          <label for="issueDescInput">Description</label>
+          <input
+            type="text"
+            id="description"
+            class="form-control"
+            id="issueDescInput"
+            placeholder="Describe the issue ..."
+          />
+          <label for="issueDescInput">Author</label>
+          <input
+            type="text"
+            id="author"
+            class="form-control"
+            id="issueDescInput"
+            placeholder="Describe the issue ..."
+          />
+        </div>
+        <div class="form-group">
+          <label for="issueDescInput">Severity</label>
+          <select class="form-control" id="severity">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+      </form>
+      <hr />
+      <div class="d-flex justify-content-between">
+        <h3>List Todo</h3>
+        <div>
+          <input
+            type="text"
+            class="form-control"
+            id="inputSearch"
+            placeholder="Search by description"
+            onkeyup="search_desc()"
+          />
+        </div>
+      </div>
+      <br />
+      <div class="row btnContainer">
+        <div class="col-2">Filter:</div>
+        <div class="col-10">
+          <button
+            id="sortAll"
+            type="button"
+            class="btn btn-primary btn-sm js-filter-btn"
+            onclick="filterSelection('all')"
+          >
+            All
+          </button>
+          <button
+            id="sortOpen"
+            type="button"
+            class="btn btn-success btn-sm js-filter-btn"
+            onclick="filterSelection('open')"
+          >
+            Open
+          </button>
+          <button
+            id="sortClose"
+            type="button"
+            class="btn btn-info btn-sm js-filter-btn"
+            onclick="filterSelection('close')"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-2">Order By:</div>
+        <div class="col-2">
+          <select class="form-control" id="orderBy">
+            <option>ASC</option>
+            <option>DESC</option>
+          </select>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-lg-12">
+          <div id="issuesList" style="list-style: none">
+            <!-- <div class="card" id="card">
+              <div class="card-header d-flex align-items-center">
+              ${todoId}
+                <span
+                  class="badge badge-secondary status"
+                  style="display: inline-block; margin-left: 5px"
+                  >${todoStatus}</span>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Description: ${descriptionId}</h5>
+                <h5 class="card-title">Author: ${todoAuthor}</h5>
+                <p class="card-text">
+                  <span class="badge badge-primary">${todoSeverity}</span>
+                </p>
+                <div class="d-flex justify-content-end">
+                  <button
+                    type="submit"
+                    class="btn btn-primary toggleBtn"
+                    style="margin-right: 10px"
+                    onclick="toggleStatus('${todoId}')"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="submit"
+                    class="btn btn-danger"
+                    onclick="deleteTodo('${todoId}')"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./issue-tracker-pure.js"></script>
+  </body>
+</html>
